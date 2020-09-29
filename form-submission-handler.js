@@ -60,8 +60,9 @@
     if (formData.honeypot) {
       return false;
     }
-
     disableAllButtons(form);
+    var loader = form.querySelector(".sending_message");
+    loader.style.display = "block";
     var url = form.action;
     var xhr = new XMLHttpRequest();
     xhr.open('POST', url);
@@ -79,6 +80,7 @@
             thankYouMessage.style.display = "block";
           }
         }
+        loader.style.display = "none";
     };
     // url encode form data for sending as post data
     var encoded = Object.keys(data).map(function(k) {
